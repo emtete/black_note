@@ -1,0 +1,680 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta name="description" content="">
+  <meta name="author" content="">
+
+  <title>BlackNote</title>
+  <link href="vendor/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+  <link rel="stylesheet" href="vendor/medium-editor-master/demo/css/demo.css">
+  <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"> -->
+  <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="vendor/medium-editor-master/dist/css/medium-editor.css">
+  <link rel="stylesheet" href="vendor/medium-editor-master/dist/css/themes/default.css" id="medium-editor-theme">
+  <!-- Bootstrap core CSS -->
+  <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+  <link href="index.css" rel="stylesheet">
+  <style>
+    html, body{
+      width: 100%; height: 100%;
+    }
+    body{
+      background-color: #323232;
+    }
+    .commandLine{
+      width:400px; 
+      position:absolute; 
+      bottom:10px; 
+      left:50%; 
+      margin-left:-200px;
+    }
+    .modal-table{
+      display:table;
+      position:relative;
+      width:100%;
+      height:600px;
+      margin-top:10px;
+      border:2px solid #666;
+    }
+    .modal-cell{
+      display:table-cell;
+      vertical-align:middle;
+    }
+    .box{
+      margin:0 auto;padding:10px;
+      font-size:15px;
+      color:antiquewhite;
+      display: table;
+      margin-left: 40%;
+      /* margin-right: auto; */
+      font-family: D2Coding, 'D2 coding', monospace;
+    }
+    @font-face {
+      font-family: 'D2 coding';
+      font-style: normal;
+      font-weight: 400;
+      src: url('D2Coding.eot');
+      src: local('※'), local('D2Coding'),
+          url('D2Coding.eot?#iefix') format('embedded-opentype'),
+          url('D2Coding.woff2') format('x-woff2'),
+          url('D2Coding.woff') format('woff'),
+          url('D2Coding.ttf') format('truetype'),
+          url('D2Coding.svg') format('svg');
+    }
+
+    .ui-autocomplete {
+      max-height: 100px;
+      overflow-y: auto;
+      /* prevent horizontal scrollbar */
+      overflow-x: hidden;
+    }
+    /* IE 6 doesn't support max-height
+    * we use height instead, but this forces the menu to always be this tall
+    */
+    * html .ui-autocomplete {
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="#">Home
+              <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="login.html">Login</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="testDrive.html">testDrive</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+  <!-- Page Content -->
+  <!-- <div class="container">
+    <div class="row">
+      <div class="col-lg-12 text-center">
+        <h1 class="mt-5">A Bootstrap 4 Starter Template</h1>
+        <p class="lead">Complete with pre-defined file paths and responsive navigation!</p>
+        <ul class="list-unstyled">
+          <li>Bootstrap 4.3.1</li>
+          <li>jQuery 3.4.1</li>
+        </ul>
+      </div>
+    </div>
+  </div> -->
+  <div class="container-fluid" >
+      <!-- <h1 class="mt-4">Simple Sidebar</h1> -->
+    <div class="modal-table">
+      <div class="modal-cell">
+        <div class="box">
+            <p class="editable">abced</p>
+            <!-- <p contenteditable="true">abced</p> -->
+            
+          <!-- <div class="editable">
+          </div> -->
+        </div>
+      </div>
+    </div>
+    <!-- <input class="commandLine" type="text"/> -->
+    <!-- Autocomplete -->
+    <!-- <h2 class="demoHeaders">Autocomplete</h2> -->
+    <div>
+      <input class="commandLine" id="autocomplete" title="type &quot;a&quot;">
+    </div>
+  </div>
+
+  <!-- <ul id="testUi" class="ui-menu ui-widget ui-widget-content ui-autocomplete ui-front" style="width:400px;display:block">
+    <li class="ui-menu-item">
+        <div id="" class="ui-menu-item-wrapper">abc</div>
+        <div id="" class="ui-menu-item-wrapper">def</div>
+        <div id="" class="ui-menu-item-wrapper">ghi</div>
+    </li>
+    <li></li>
+    <li></li>
+  </ul> -->
+
+  <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+<script src="vendor/medium-editor-master/dist/js/medium-editor.js"></script>
+<script>
+  // var commandTop = $('.commandLine').offset().top;
+  // var uiHeight = $('#testUi').height();
+//   var commandLeft = $('.commandLine').offset().left;
+// $('#testUi').offset({left: commandLeft, top: commandTop - uiHeight});
+
+cssContainerHandler();
+
+function cssContainerHandler(){
+	var bottomCoordinate = $('.commandLine').offset().top;
+	var containerHeight = bottomCoordinate - 80;
+	$('.modal-table').css('height', containerHeight);
+}
+/*-----------------------------------------------------------------------
+-- [TO DO LIST]
+------------------------------------------------------------------------*/
+//지금 테스트하면서 불편한 부분 생각해보기
+//핸드폰으로 쓴다면 어떻게 될지 생각해보기
+//자동완성기능 구현하기
+
+//저장 구현하기
+//엔터와 쉬프트 엔터 바꾸기
+//underscore 적용하기????????
+
+//폴더이름 중복 해결하기
+//방향키를 통해 폴더 선택 구현하기.
+//선택된 폴더 색 변경
+//getFolder 상대경로를 통해 상위폴더 선택(..) 구현 필요
+//폴더 속성(ol, ul) 지정, 수정 구현하기
+//폴더 이름 수정 구현하기
+
+
+/*-----------------------------------------------------------------------
+-- [...]
+------------------------------------------------------------------------*/
+(function (root, factory) {
+    root.BlackNote = factory;
+}(this, function ($) {
+
+var FOLDER, CURRENT_FOLDER, COMMAND = {};
+
+var bn,
+    BlackNote = bn = function() {
+
+    return this.init();
+};
+
+bn.fn = bn.prototype = {
+    init: function() { 
+        FOLDER = new bn.Folder('/', '', 'ul', undefined, new bn.SubFolders(), '', 0); //path, name, type, supFolder, subFolders, seq, depth
+        CURRENT_FOLDER = FOLDER;
+
+        bn.eventHandlers.initEventBinding();
+    }
+};
+
+  
+/*----------------------
+-- [Define Util]
+---------------------*/
+(function () {
+  
+    var Util = {
+
+        // updated : 2019.08.01
+        keyCode: {
+            BACKSPACE: 8,
+            COMMA: 188,
+            DELETE: 46,
+            DOWN: 40,
+            END: 35,
+            ENTER: 13,
+            ESCAPE: 27,
+            HOME: 36,
+            LEFT: 37,
+            PAGE_DOWN: 34,
+            PAGE_UP: 33,
+            PERIOD: 190,
+            RIGHT: 39,
+            SPACE: 32,
+            TAB: 9,
+            UP: 38
+        },
+
+        // updated : 2019.08.01
+        ALERT_MESSAGE: { msgFolderName   : '폴더명을 입력하세요.'
+                       , msgRequestPath  : '요청경로가 올바르지 않습니다.'
+                       , msgSelectFolder : '요청 폴더가 선택되었습니다.'
+                       , msgIsCommand   : '잘못된 사용법입니다.'
+            },
+
+        // updated : 2019.08.01
+        saveContents: function () {
+            var getFolder = bn.util.getFolder,
+                getPath   = bn.util.getPath;
+
+            $.each($('.page'), function(index, item) {
+                var seq = item.id.split('_')[1];
+                var folder = getFolder(getPath(seq));
+                folder.content = $('#'+item.id).text();
+                // folder.contentDisplay = $('#p_'+seq).css('display');
+                // folder.folderDisplay = $('#li_'+seq).css('display');
+            });
+        },
+
+        // updated : 2019.08.01
+        getPath: function (seq) {
+            var pieceOfSeq;
+            var subFolders = FOLDER.subFolders;
+            for (var i = 0; i < seq.length; i += 2) {
+                if (+seq.slice(i, i+2) <= subFolders.numberOfFolder()-1) {
+                    var key = subFolders.getSortedKeys()[+seq.slice(i, i+2)];
+                    if (seq.length === i+2) {
+                        return subFolders[key].path;
+                    }
+                }
+                subFolders = subFolders[key].subFolders;
+            }
+            return -1;
+        },
+
+        // updated : 2019.08.01
+        getMessage: function (messageName){ //throw new Exception구현하기.
+            return bn.util.ALERT_MESSAGE[messageName];
+        },
+
+        // updated : 2019.08.01
+        getFolder: function (requestPath) { 
+            var isAbsolutePath = (requestPath.slice(0,1) == '/') ? true : false; //첫 문자가 /이면 절대경로, 아니라면 상대경로
+            var path   = (isAbsolutePath) ? requestPath.split('/') : (CURRENT_FOLDER.path + requestPath).split('/')
+              , folder = (isAbsolutePath) ? FOLDER                 :  CURRENT_FOLDER 		// 상대경로 : 절대경로
+              , i      = (isAbsolutePath) ? 0                      :  CURRENT_FOLDER.depth;
+            while (path.indexOf('') !== -1) path.splice(path.indexOf(''), 1);
+            while(i < path.length && folder.subFolders.isExist(path[i])) {
+                folder = folder.subFolders[path[i]];
+                i++;
+            }
+            return (i == path.length) ? folder : undefined;
+        },
+
+        // updated : 2019.08.01
+        isCommand: function (obj) {
+            if (typeof obj != 'function') {
+                alert(bn.util.ALERT_MESSAGE['msgIsCommand']);
+                return false;
+            }
+            return true;
+        },
+
+        // updated : 2019.08.01
+        isValidRequest: function (target, alertMessage) {
+            if (target == undefined) {
+                alert(bn.util.ALERT_MESSAGE[alertMessage]);
+                return true;
+            }
+            return false;
+        },
+
+        // updated : 2019.08.01
+        to2Digit: function (seq) {
+            var seqStr = seq+'';
+            return (seqStr.length == 1) ? ('0' + seqStr) : seq;
+        },
+
+        // updated : 2019.08.01
+        renderHTML: function () {
+            function folderToTag(folder) {
+
+                var tag = []
+                , subFoldersSortedKeys = folder.subFolders.getSortedKeys();
+                
+                tag.push( folder.genTag('outsideTag') );
+
+                subFoldersSortedKeys.forEach( function(key) {
+                    var subFolder = folder.subFolders[key];
+
+                    tag.push( subFolder.genTag('insideTag', key) );
+                    tag.push( subFolder.genTag('pageTag', key) );
+
+                    if (subFolder.subFolders.numberOfFolder() > 0) 
+                        tag.push( folderToTag(subFolder) );
+                });
+
+                tag.push('</ul>\n');
+
+                return tag.join('');
+            }
+            console.log(folderToTag(FOLDER));
+
+            $('div .box').html( folderToTag(FOLDER) );	
+            bn.util.applyPageByMediumEditor();
+            bn.util.folderClickEventBinding();
+        },
+
+        // updated : 2019.08.01... display 변경부분을 jquery의 show, hide 를 사용해서 테스트해보기
+        folderClickEventBinding: function () {
+            var getFolder   = bn.util.getFolder,
+                getPath     = bn.util.getPath,
+                numberOfSeq = bn.util.numberOfSeq;
+
+            $.each($('.folder'), function(index, item) {
+                var seq = item.id.split('_')[1];
+                
+                $('#li_'+seq).click( function(event){
+                    if (event.metaKey) {
+                        for (var i = 0; i < numberOfSeq('li', seq); i++) {
+                            //클릭한 폴더의 하위폴더 display none.
+                            var supFolder = getFolder( getPath(seq+'0'+i) );
+                            var liTagId = '#li_'+seq+'0'+i
+                            var folderDisplay = ($(liTagId).css('display') === 'none') ? 'list-item' : 'none';
+
+                            $(liTagId).css('display', folderDisplay);
+                            supFolder.folderDisplay = folderDisplay;
+                            
+                            //클릭한 폴더의 하위폴더의 페이지 handling
+                            var subFolder = getFolder( getPath(seq+'0'+i) );
+                            var pTagId = '#p_'+seq+'0'+i;
+
+                            if (folderDisplay === 'none') {   //폴더가 플립될 때, 하위 폴더의 페이지 상태저장, 플립. 
+                                subFolder.contentDisplay = $(pTagId).css('display');
+                                $(pTagId).css('display', 'none');
+                            } else {                          //폴더 display block될 때, 페이지의 저장된 display값 적용.
+                                $(pTagId).css('display', subFolder.contentDisplay);
+                            }
+
+                        }
+                    } else {
+                        var folder = getFolder( getPath(seq) );
+                        var attr = ($('#p_'+seq).css('display') === 'none') ? 'block' : 'none';
+                        $('#p_'+seq).css('display', attr);
+                        folder.contentDisplay = attr;
+                    }
+                });//$('#li_'+seq).click
+            });//$.each($('.folder')
+        },//folderClickEventBinding()
+
+        // updated : 2019.08.01
+        applyPageByMediumEditor: function () {
+            var editor = new MediumEditor('.page', {
+                buttonLabels: 'fontawesome'
+            });
+        },
+        
+        // updated : 2019.08.01
+        createComparisonFunction: function (subFolders) {
+            return function(key1, key2) {
+                var value1 = subFolders[key1].seq;
+                var value2 = subFolders[key2].seq;
+
+                if (value1 < value2) {
+                    return -1;
+                } else if (value1 > value2) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            }
+        },
+
+        // updated : 2019.08.01
+        searchCommand: function (searchWord) {
+            var result = [];
+              
+            Object.keys(bn.commands).forEach( function(command) {
+                if (command.slice(0, searchWord.length) === searchWord) {
+                result.push(command);
+                }
+            });
+            return result;
+        },
+
+        // updated : 2019.08.01
+        numberOfSeq: function(kindsOfTag, preSeq) {
+            var tagId = '#' + kindsOfTag + '_' + preSeq; // ex) #li_00
+            var i = 0;
+            while ( $(tagId+'0'+i).length > 0 ) i++;
+
+            return i;
+        }
+    };
+
+    BlackNote.util = Util;
+})();
+/*----------------------
+-- [Define EventHandlers]
+---------------------*/
+(function () {
+
+    var EventHandlers = {
+
+        // updated : 2019.08.01
+        initEventBinding: function() {
+            var $target = $('.commandLine');
+
+            $target.keydown( function(key) {
+                switch (key.keyCode) {
+                    case bn.util.keyCode.ENTER:                             // 명령어 실행
+                        var commands = $target.val().trim().split(' ')
+                          , obj      = bn.commands[ commands[0] ];
+                        if(!bn.util.isCommand(obj)) return;
+                        obj(commands[1]);
+                        break;
+                }
+            });
+            
+            $target.keyup( function(key) {
+                if ( key.keyCode !== bn.util.keyCode.ENTER && 
+                     key.keyCode !== bn.util.keyCode.DOWN  && 
+                     key.keyCode !== bn.util.keyCode.UP        ) {
+
+                    var result = bn.util.searchCommand($target.val()); // 자동완성기능을 위한 코드?
+                }
+            });
+        }
+    };
+
+    BlackNote.eventHandlers = EventHandlers;
+})();
+/*----------------------
+-- [Define Command]
+---------------------*/
+(function () {
+  
+    var Commands = {
+
+        // updated : 2019.08.01
+        addFolder: function(name, type) { //type은 ol, ul 중 택1, default : ul
+            if (bn.util.isValidRequest(name, 'msgFolderName')) return;
+            CURRENT_FOLDER.addFolder(name, type);
+            bn.util.saveContents();
+            bn.util.renderHTML();
+        },
+
+        // updated : 2019.08.01
+        selectFolder: function(name) { // name은 requestPath
+            var folder = bn.util.getFolder(name);
+
+            if (bn.util.isValidRequest(name, 'msgFolderName')) return; //요청경로를 입력하지 않았을 경우
+            if (bn.util.isValidRequest(folder, 'msgRequestPath')) return; //입력받은 요청경로가 없을 경우
+
+            folder.selectFolder();
+        },
+
+        // updated : 2019.08.01
+        pwd: function() { 
+            alert(CURRENT_FOLDER.getPath());
+        }
+
+    };
+
+    BlackNote.commands = Commands;
+})();
+/*----------------------
+-- [Define Folder]
+---------------------*/
+(function () {
+  
+    var Folder = function (path, name, type, supFolder, subFolders, seq, depth) {
+        this.path = path;
+        this.name = name;
+        this.type = type; //ol, ul
+        this.supFolder = supFolder;  //상위 폴더
+        this.subFolders = subFolders; //하위 폴더
+        this.seq  = seq;
+        this.depth = depth;
+        this.content = '';
+        this.contentDisplay = 'none';
+        this.folderDisplay = 'list-item';
+    };
+  
+    Folder.prototype = {
+    
+        // updated : 2019.08.01
+        addFolder: function(name, type) { 
+            type = (type == undefined) ? 'ul' : type;
+            var path = this.path + name + '/';
+            this.subFolders[name] = new bn.Folder(path, name, type, this, new bn.SubFolders(), this.seq + bn.util.to2Digit(this.subFolders.numberOfFolder()), this.depth + 1);
+        },
+        
+        // updated : 2019.08.01
+        selectFolder: function() { 
+            CURRENT_FOLDER = this;
+            alert(bn.util.ALERT_MESSAGE['msgSelectFolder']);
+        },
+
+        // updated : 2019.08.01
+        getPath: function() {
+            return this.path;
+        },
+        
+        // updated : 2019.08.01
+        getId: function(kindsOfTag, key) {
+            var tagId;
+            switch(kindsOfTag) {
+                case 'outsideTag':
+                tagId = (this.path == '/') ? this.type : this.type+'_'+this.seq;
+                break;
+                case 'insideTag':
+                tagId = 'li_' + this.seq;
+                break;
+                case 'pageTag':
+                tagId = 'p_' + this.seq;
+                break;
+            }
+            return tagId;
+        },
+        
+        // updated : 2019.08.01
+        genTag: function(kindsOfTag, key) {
+            var tag;
+            switch(kindsOfTag) {
+                case 'outsideTag':
+                tag = '\n<'+this.type+' id="'+ this.getId('outsideTag') +'">\n';
+                break;
+
+                case 'insideTag':
+                tag = '<li id="'+ this.getId('insideTag', key) +'" class="folder" style="display:'+this.folderDisplay+'">' + key + '</li>\n';
+                break;
+
+                case 'pageTag':
+                var contentDisplay = (this.folderDisplay === 'none') ? 'none' : this.contentDisplay;
+                tag = '<p id="'+ this.getId('pageTag', key) +'" class="page" style="display:'+contentDisplay+'">'+this.content+'</p>\n';
+                break;
+            }
+            return tag;
+        }
+
+    };
+
+    BlackNote.Folder = Folder;
+})();
+/*----------------------
+-- [Define SubFolders]
+---------------------*/
+(function () {
+
+  var SubFolders = function() {
+
+  };
+
+  SubFolders.prototype = {
+
+    // updated : 2019.08.01
+    isExist: function(file) { //file : folder or page
+        return Object.prototype.hasOwnProperty.call(this, file) && Object.prototype.propertyIsEnumerable.call(this, file);
+    },
+    
+    // updated : 2019.08.01
+    getSortedKeys: function() {
+        var keys = Object.keys(this);
+        keys.sort(bn.util.createComparisonFunction(this));    
+        return keys;
+    },
+    
+    // updated : 2019.08.01
+    numberOfFolder: function() {
+        return Object.keys(this).length;
+    },
+  
+  };
+
+  Object.defineProperty(SubFolders.prototype, 'isExist', {enumerable : false});
+  Object.defineProperty(SubFolders.prototype, 'getSortedKeys', {enumerable : false});
+  Object.defineProperty(SubFolders.prototype, 'numberOfFolder', {enumerable : false});
+
+  BlackNote.SubFolders = SubFolders;
+})();
+
+return BlackNote;
+}(jQuery)) ); 
+
+/*-----------------------------------------------------------------------
+-- [RUN]
+------------------------------------------------------------------------*/
+// initialization();
+
+var editor = new MediumEditor('.editable', {
+            buttonLabels: 'fontawesome'
+})//testCode
+
+var bn = new BlackNote();
+
+var availableTags = [
+	"addFolder",
+	"selectFolder",
+	"pwd"
+];
+$( "#autocomplete" ).autocomplete({
+	 source: availableTags
+  ,position: { my: "left bottom", at: "left top" }
+});
+
+// $('body').on('focus', '[contenteditable]', function() {
+//     alert(1);
+// });
+
+// $('body').on('focus', function() {
+//     alert(1);
+// });
+
+
+</script>
+
+
+
+
+
+
+
+
+
+
+
+
+

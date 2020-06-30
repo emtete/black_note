@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>BlackNote</title>
+    <link href="vendor/jquery-ui-1.12.1.custom/jquery-ui.css" rel="stylesheet">
+    <link rel="stylesheet" href="vendor/medium-editor-master/demo/css/demo.css">
+    <!-- <link rel="stylesheet" href="http://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.css"> -->
+    <link href="http://cdn.jsdelivr.net/gh/joungkyun/font-d2coding/d2coding.css" rel="stylesheet" type="text/css">
+    <link rel="stylesheet" href="vendor/medium-editor-master/dist/css/medium-editor.css">
+    <link rel="stylesheet" href="vendor/medium-editor-master/dist/css/themes/default.css" id="medium-editor-theme">
+    <!-- Bootstrap core CSS -->
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="index.css" rel="stylesheet">
+
+    <!-- google Sign-in -->
+    <meta name="google-signin-scope" content="profile email">
+    <meta name="google-signin-client_id" content="144987687018-2jbb6772dukvn4bln53tctddr46apl26.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+  
+  <style>
+    html, body{
+      width: 100%; height: 100%;
+    }
+    body{
+      background-color: #323232;
+    }
+    .commandLine{
+      width:400px; 
+      position:absolute; 
+      bottom:10px; 
+      left:50%; 
+      margin-left:-200px;
+    }
+    .modal-table{
+      display:table;
+      position:relative;
+      width:100%;
+      height:600px;
+      margin-top:10px;
+      border:2px solid #666;
+    }
+    .modal-cell{
+      display:table-cell;
+      vertical-align:middle;
+    }
+    .box{
+      margin:0 auto;padding:10px;
+      font-size:15px;
+      color:antiquewhite;
+      display: table;
+      margin-left: 40%;
+      /* margin-right: auto; */
+      font-family: D2Coding, 'D2 coding', monospace;
+    }
+    @font-face {
+      font-family: 'D2 coding';
+      font-style: normal;
+      font-weight: 400;
+      src: url('D2Coding.eot');
+      src: local('※'), local('D2Coding'),
+          url('D2Coding.eot?#iefix') format('embedded-opentype'),
+          url('D2Coding.woff2') format('x-woff2'),
+          url('D2Coding.woff') format('woff'),
+          url('D2Coding.ttf') format('truetype'),
+          url('D2Coding.svg') format('svg');
+    }
+
+    .ui-autocomplete {
+      max-height: 100px;
+      overflow-y: auto;
+      /* prevent horizontal scrollbar */
+      overflow-x: hidden;
+    }
+    /* IE 6 doesn't support max-height
+    * we use height instead, but this forces the menu to always be this tall
+    */
+    * html .ui-autocomplete {
+      height: 100px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- Navigation -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark static-top">
+    <div class="container">
+      <a class="navbar-brand" href="#">Start Bootstrap</a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarResponsive">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="index.html">Home</a>
+          </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="login.html">Login
+                <span class="sr-only">(current)</span>
+            </a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Services</a>
+          </li>
+          <li class="nav-item">
+            <a class="nav-link" href="#">Contact</a>
+          </li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Page Content -->
+  <div class="container-fluid" >
+    <div class="modal-table">
+      <div class="modal-cell">
+        <div class="box">
+            <!-- <p class="editable">abced</p> -->
+
+            <div class="g-signin2" data-onsuccess="onSignIn" data-theme="dark"></div>
+            <script>
+            function onSignIn(googleUser) {
+                // Useful data for your client-side scripts:
+                var profile = googleUser.getBasicProfile();
+                console.log("ID: " + profile.getId()); // Don't send this directly to your server!
+                console.log('Full Name: ' + profile.getName());
+                console.log('Given Name: ' + profile.getGivenName());
+                console.log('Family Name: ' + profile.getFamilyName());
+                console.log("Image URL: " + profile.getImageUrl());
+                console.log("Email: " + profile.getEmail());
+
+                // The ID token you need to pass to your backend:
+                var id_token = googleUser.getAuthResponse().id_token;
+                console.log("ID Token: " + id_token);
+            }
+            function signOut() {
+                var auth2 = gapi.auth2.getAuthInstance();
+                auth2.signOut().then(function () {
+                console.log('User signed out.');
+                });
+            }
+            </script>
+            
+        </div>
+      </div>
+    </div>
+  </div>
+
+  
+
+  <div role="status" aria-live="assertive" aria-relevant="additions" class="ui-helper-hidden-accessible"></div>
+  <!-- Bootstrap core JavaScript -->
+  <script src="vendor/jquery/jquery.slim.min.js"></script>
+  <script src="vendor/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
+  <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>
+
+<script src="vendor/medium-editor-master/dist/js/medium-editor.js"></script>
